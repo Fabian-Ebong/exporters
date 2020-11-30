@@ -1,0 +1,37 @@
+---
+########################### install windows exporter ###################
+- name: Download {{  windows_exporter_exe_name }}
+  win_command: "aws s3 cp {{ windows_exporter_exe_url }} {{ dependency_dir }}/{{  windows_exporter_exe_name }}"
+
+- name: Install {{  windows_exporter_exe_name }}
+  win_package:
+    path: "{{ dependency_dir }}/{{  windows_exporter_exe_name }}"
+    arguments: '/q /allusers /log="windows_exporter_exe_install.log" /norestart'
+    product_id: auto
+    state: present
+    
+    
+    
+    
+    ==============================
+    
+    
+    
+    ---
+
+########################### install grok exporter ###################
+
+- name: Download {{  grok_exporter_zip_name }}
+  win_command: "aws s3 cp {{ grok_exporter_zip_url }} {{ dependency_dir }}/{{  grok_exporter_zip_name }}"
+
+- name: Unzip grok_exporter-1.0.0.RC5.windows-amd64.zip
+  win_unzip:
+    src: "{{ dependency_dir }}/{{  grok_exporter_zip_name }}"
+    dest: "{{ dependency_dir }}/{{  grok_exporter_exe_name }}"
+
+- name: Install {{  grok_exporter_exe_name }}
+  win_package:
+    path: "{{ dependency_dir }}/{{  grok_exporter_exe_name }}"
+    arguments: '/q /allusers /log="grok_exporter_exe_install.log" /norestart'
+    product_id: auto
+    state: present
