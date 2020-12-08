@@ -24,5 +24,5 @@ Gork installs does not insatall correctly when using win_package
     - name: install windows exporter msi
       win_package:
           Path: C:/windows_exporter-0.15.0-amd64.msi
-		  product_id: auto
+	  product_id: auto
           state: present
