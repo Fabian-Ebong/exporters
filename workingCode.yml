@@ -1,0 +1,28 @@
+
+Gork installs correctly when using win_chocolatey
+
+---
+- name: "Chocolatey"
+  hosts: win
+  tasks:
+    - name: Install chocolatey
+      win_chocolatey:
+          name:
+           - chocolatey
+           - chocolatey-core.extension
+           - prometheus-grok-exporter
+          state: present
+
+
+
+
+Gork installs does not insatall correctly when using win_package
+---
+- name: "install windows exporter msi"
+  hosts: win
+  tasks:
+    - name: install windows exporter msi
+      win_package:
+          Path: C:/windows_exporter-0.15.0-amd64.msi
+		  product_id: auto
+          state: present
