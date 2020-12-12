@@ -1,0 +1,24 @@
+---
+#Removed, AWS CLI is installed in Base AMI
+
+# - name: Obtain info about AWSCLI.msi
+#   win_stat:
+#     path: "C:\\Temp\\AWSCLI.msi"
+#   register: aws_cli
+
+# - name: Fetch AWSC Cli installer
+#   win_get_url:
+#     url: "{{ awscli_msi_url }}"
+#     dest: "C:\\Temp\\AWSCLI.msi"
+#   when: not aws_cli.stat.exists
+
+# - name: Install AWS CLI from msi
+#   win_package:
+#     path: "C:\\Temp\\AWSCLI.msi"
+#     state: present
+
+
+
+
+# #AWS CLI
+# awscli_msi_url: "https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi"
