@@ -5,3 +5,24 @@ https://github.com/fstab/grok_exporter/releases
 windows exporter
 
 https://github.com/prometheus-community/windows_exporter/releases
+
+Initial Assumptions
+The thing to understand is that neither security nor TR will allow us to have a single account that has access to everything – Web, App, DB, KMS, AD. Also they need to have as much gradation on who is doing what changes. So we won’t be able to use that “service account” for our admin access to the systems.
+
+With that being said, we will be using a Group Managed Service Account (gMSA) for the “Service Account” for each class of systems that needs one - App , KMS, DB, & Web?  – ex. ccgs-sql-service; ccgs-app-service; etc…
+
+Basic information on gMSA can be found here:
+
+Step-by-Step: How to work with Group Managed Service Accounts (gMSA)
+
+https://techcommunity.microsoft.com/t5/itops-talk-blog/step-by-step-how-to-work-with-group-managed-service-accounts/ba-p/329864
+
+ And for SQL specific information:
+
+ Using Group Managed Service Accounts with SQL Server
+
+https://www.mssqltips.com/sqlservertip/5340/using-group-managed-service-accounts-with-sql-server/
+
+Install SQL Server from the Command Prompt
+
+https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-2016
