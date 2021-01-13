@@ -26,3 +26,19 @@ https://www.mssqltips.com/sqlservertip/5340/using-group-managed-service-accounts
 Install SQL Server from the Command Prompt
 
 https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-2016
+
+
+Configuration ADManagedServiceAccount_CreateManagedServiceAccount_Config
+{
+    Import-DscResource -Module ActiveDirectoryDsc
+
+    Node localhost
+    {
+        ADManagedServiceAccount 'ExampleStandaloneMSA'
+        {
+            Ensure             = 'Present'
+            ServiceAccountName = 'Service01'
+            AccountType        = 'Standalone'
+        }
+    }
+}
